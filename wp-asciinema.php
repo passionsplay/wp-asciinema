@@ -29,3 +29,6 @@ if ( ! defined( 'WPINC' ) ) {
 
 require __DIR__ . '/src/loader.php';
 
+$wp_asciinema = new WP_Asciinema_Plugin;
+$wp_asciinema->init();
+
