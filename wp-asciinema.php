@@ -27,3 +27,5 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+require __DIR__ . '/src/loader.php';
+
