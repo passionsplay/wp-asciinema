@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       WP Asciinema
  * Description:       Displays terminal sessions recorded using Asciinema.
- * Version:           0.0.1
+ * Version:           0.0.2
  * Author:            Benjamin Turner
  * Author URI:        http://passionsplay.com
  * Plugin URI:        http://passionsplay.com/plugins/wp-asciinema

@@ -15,9 +15,8 @@ class WP_Asciinema_Plugin {
 	 * Enqueue scripts and styles needed by this plugin
 	 */
 	public static function enqueue_scripts_styles() {
-		wp_enqueue_script( 'asciinema', WP_Asciinema_Plugin::get_plugin_folder( 'url' ) . 'assets/vendor/asciinema-player.js', array(), 'v2.4.1', true );
-		wp_enqueue_style( 'asciinema', WP_Asciinema_Plugin::get_plugin_folder( 'url' ) . 'assets/vendor/asciinema-player.css', array(), 'v2.4.1' );
-
+		wp_enqueue_script( 'asciinema', WP_Asciinema_Plugin::get_plugin_folder( 'url' ) . 'assets/vendor/asciinema-player.js', array(), 'v2.6.1', true );
+		wp_enqueue_style( 'asciinema', WP_Asciinema_Plugin::get_plugin_folder( 'url' ) . 'assets/vendor/asciinema-player.css', array(), 'v2.6.1' );
 	}
 
 	/**
