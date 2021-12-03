@@ -32,8 +32,11 @@ class WP_Asciinema_Shortcode_Asciinema {
 
 		$a = shortcode_atts( $defaults, $atts );
 
-		$video_url = $asciicast_url . '/' . $a['src'];
+		$video_url = $a['src'];
 
+        wp_enqueue_script( 'asciinema');
+        wp_enqueue_style( 'asciinema');		
+		
 		ob_start(); ?>
 
 		<asciinema-player
