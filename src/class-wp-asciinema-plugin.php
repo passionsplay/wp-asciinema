@@ -58,37 +58,4 @@ class WP_Asciinema_Plugin {
 				break;
 		}
 	}
-
-	/**
-	 * Gets the folder where asciicasts are stored
-	 *
-	 * @param string $type url|path
-	 *
-	 * @return string Either the url or the path to the folder containing
-	 *		the asciicasts
-	 */
-	public static function get_asciicast_folder( $type ) {
-
-		// Allow filtering the location of the asciicast folder
-		$asciicast_folder = trailingslashit( apply_filters( 'wp_asciinema_asciicasts_folder', 'asciicasts' ) );
-
-		$upload = wp_upload_dir();
-
-		$asciicast_path = $upload['basedir'] . '/' . $asciicast_folder;
-		if ( ! file_exists( $asciicast_path ) ) {
-			wp_mkdir_p( $asciicast_path );
-		}
-
-		switch ( $type ) {
-			case 'url':
-				return $upload['baseurl'] . '/' . $asciicast_folder;
-				break;
-			case 'path':
-			default:
-				return $asciicast_path;
-				break;
-		}
-
-	}
-
 }

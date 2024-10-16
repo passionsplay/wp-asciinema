@@ -17,9 +17,6 @@ class WP_Asciinema_Shortcode_Asciinema {
 	 * @param array $atts The array of shortcode attributes.
 	 */
 	public static function render( $atts ) {
-
-		$asciicast_url = WP_Asciinema_Plugin::get_asciicast_folder( 'url' );
-
 		$defaults = apply_filters( 'wp_asciinema_player_defaults', array(
 			'src'      => '',
 			'theme'    => 'asciinema',
