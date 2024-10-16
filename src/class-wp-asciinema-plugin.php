@@ -7,8 +7,19 @@
 class WP_Asciinema_Plugin {
 
 	public function init() {
+		add_filter('upload_mimes', array( __CLASS__, 'add_cast_mime_type'));
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts_styles' ) );
 		$this->register_shortcodes();
+	}
+
+	/**
+	 * Registers the 'cast' mime type with the WP media library
+	 *
+	 * See: https://docs.asciinema.org/manual/asciicast/v2/
+	 */
+	public static function add_cast_mime_type($mimes) {
+		$mimes['cast'] = 'application/json';
+		return $mimes;
 	}
 
 	/**
@@ -81,4 +92,3 @@ class WP_Asciinema_Plugin {
 	}
 
 }
-
