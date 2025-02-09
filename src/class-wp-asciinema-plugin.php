@@ -7,8 +7,19 @@
 class WP_Asciinema_Plugin {
 
 	public function init() {
+		add_filter('upload_mimes', array( __CLASS__, 'add_cast_mime_type'));
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts_styles' ) );
 		$this->register_shortcodes();
+	}
+
+	/**
+	 * Registers the 'cast' mime type with the WP media library
+	 *
+	 * See: https://docs.asciinema.org/manual/asciicast/v2/
+	 */
+	public static function add_cast_mime_type($mimes) {
+		$mimes['cast'] = 'application/json';
+		return $mimes;
 	}
 
 	/**
@@ -47,38 +58,4 @@ class WP_Asciinema_Plugin {
 				break;
 		}
 	}
-
-	/**
-	 * Gets the folder where asciicasts are stored
-	 *
-	 * @param string $type url|path
-	 *
-	 * @return string Either the url or the path to the folder containing
-	 *		the asciicasts
-	 */
-	public static function get_asciicast_folder( $type ) {
-
-		// Allow filtering the location of the asciicast folder
-		$asciicast_folder = trailingslashit( apply_filters( 'wp_asciinema_asciicasts_folder', 'asciicasts' ) );
-
-		$upload = wp_upload_dir();
-
-		$asciicast_path = $upload['basedir'] . '/' . $asciicast_folder;
-		if ( ! file_exists( $asciicast_path ) ) {
-			wp_mkdir_p( $asciicast_path );
-		}
-
-		switch ( $type ) {
-			case 'url':
-				return $upload['baseurl'] . '/' . $asciicast_folder;
-				break;
-			case 'path':
-			default:
-				return $asciicast_path;
-				break;
-		}
-
-	}
-
 }
-
